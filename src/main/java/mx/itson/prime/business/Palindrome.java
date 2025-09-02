@@ -10,7 +10,26 @@ package mx.itson.prime.business;
  */
 public class Palindrome {
     
-    public static boolean isPalindrome(String value){
+    public static boolean isPalindrome (String value){
+        
+        
+        
+        value = value.replaceAll("\\s", "");
+        char[] letras = value.toCharArray();
+        
+        
+        int counter = letras.length;
+        for (char letra : letras){
+         
+            if (letra != letras[counter - 1]){
+                return false;
+            }
+            counter--;
+            if (counter < 0){
+                return true;
+            }
+        }
+        
         return true;
     }
 }
