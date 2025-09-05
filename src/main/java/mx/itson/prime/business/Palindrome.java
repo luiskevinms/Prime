@@ -9,27 +9,95 @@ package mx.itson.prime.business;
  * @author janto
  */
 public class Palindrome {
+
+    /**
+     * @return the leftToRight
+     */
+    public String getLeftToRight() {
+        return leftToRight;
+    }
+
+    /**
+     * @param leftToRight the leftToRight to set
+     */
+    public void setLeftToRight(String leftToRight) {
+        this.leftToRight = leftToRight;
+    }
+
+    /**
+     * @return the rightToLeft
+     */
+    public String getRightToLeft() {
+        return rightToLeft;
+    }
+
+    /**
+     * @param rightToLeft the rightToLeft to set
+     */
+    public void setRightToLeft(String rightToLeft) {
+        this.rightToLeft = rightToLeft;
+    }
+
+    /**
+     * @return the result
+     */
+    public boolean isResult() {
+        return result;
+    }
+
+    /**
+     * @param result the result to set
+     */
+    public void setResult(Boolean result) {
+        this.result = result;
+    }
     
-    public static boolean isPalindrome (String value){
-        
-        
-        
-        value = value.replaceAll("\\s", "");
+    private String leftToRight;
+    private String rightToLeft;
+    private boolean result;
+    
+    /*public static Boolean isPalindrome (String value){
+       // Limpia la cadena de texto y le quita espacios y transforma  minuscula
+        value = value.replaceAll("\\s", "").toLowerCase();
+        // Convierte el texto a un array de char
         char[] letras = value.toCharArray();
-        
-        
-        int counter = letras.length;
+       // Determina la longitud del array
+        int count = letras.length;
         for (char letra : letras){
          
-            if (letra != letras[counter - 1]){
+            if (letra != letras[count - 1]){
                 return false;
-            }
-            counter--;
-            if (counter < 0){
+            }else {
+                count -= 1;
+                //count = count -1;
+                /*if (count < 0){
+                    return true;
+                    }*/
+    /*
                 return true;
             }
         }
-        
         return true;
-    }
+    }*/
+
+    public static Palindrome validate (String value){
+        Palindrome p = new Palindrome ();
+       // Limpia la cadena de texto y le quita espacios y transforma  minuscula
+        value = value.replaceAll("\\s", "").toLowerCase();
+        // Convierte el texto a un array de char
+        //char[] letras = value.toCharArray();
+       // Determina la longitud del array
+        //int count = letras.length;
+        
+        p.setLeftToRight(value);
+        p.setRightToLeft(new StringBuilder(value).reverse().toString());
+        
+        if(p.getLeftToRight().equals(p.getRightToLeft())){
+            p.setResult(true);
+        }else{
+            p.setResult(false);
+        }
+    return p;
+    } 
 }
+
